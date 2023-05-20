@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Sucursal": "Norte",
+    "Direccion": "Monterrey #123"
+  },
+  {
+    "Id": 2,
+    "Sucursal": "Sur",
+    "Direccion": "Acapulco #456"
+  },
+  {
+    "Id": 3,
+    "Sucursal": "Este",
+    "Direccion": "Veracruz #789"
+  },
+  {
+    "Id": 4,
+    "Sucursal": "Oeste",
+    "Direccion": "Guadalajara #012"
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "Descripcion": "Pantalón a la moda color azul.",
+    "Precio": 200,
+    "Imagen": "",
+    "Stock": 100,
+    "TipoId": 1
+  },
+  {
+    "Descripcion": "Linda camisa a rayas ideal para el verano.",
+    "Precio": 100,
+    "Imagen": "",
+    "Stock": 200,
+    "TipoId": 2
+  },
+  {
+    "Descripcion": "Comodo par de zapatos, muy barato, llevelo, llevelo, llevelo yá.",
+    "Precio": 70,
+    "Imagen": "",
+    "Stock": 50,
+    "TipoId": 3
+  },
+  {
+    "Descripcion": "Elegante reloj digital color negro.",
+    "Precio": 140,
+    "Imagen": "",
+    "Stock": 504,
+    "TipoId": 4
+  },
+  {
+    "Descripcion": "Gorra deportiva ajustable.",
+    "Precio": 780,
+    "Imagen": "",
+    "Stock": 64,
+    "TipoId": 5
+  },
+  {
+    "Descripcion": "Guantes de portero talla mediana.",
+    "Precio": 1010,
+    "Imagen": "",
+    "Stock": 764,
+    "TipoId": 6
+  },
+  {
+    "Descripcion": "Sombrilla para sol o lluvia.",
+    "Precio": 10,
+    "Imagen": "",
+    "Stock": 987,
+    "TipoId": 7
+  }
+]
