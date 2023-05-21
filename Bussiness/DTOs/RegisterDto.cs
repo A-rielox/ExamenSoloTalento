@@ -1,0 +1,20 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Bussiness.DTOs;
+
+public class RegisterDto
+{
+    [Required]
+    public string Nombre { get; set; }
+
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
+
+    [Required]
+    [RegularExpression("(?=^.{6,10}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}" +
+        "{&quot;:;'?/&gt;.&lt;,])(?!.*\\s).*$", ErrorMessage = "Password must have 1 small-case" +
+        " letter, 1 Capital letter, 1 digit, 1 special character and the length should be between" +
+        " 6-10 characters.")]
+    public string Password { get; set; }
+}

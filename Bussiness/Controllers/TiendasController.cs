@@ -2,6 +2,7 @@
 using Bussiness.DTOs;
 using Entities.Entities;
 using Entities.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bussiness.Controllers;
@@ -25,6 +26,7 @@ public class TiendasController : ControllerBase
     ////////////////////////////////////////////////////
     // GET:  api/Tiendas/{id}
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<List<Tienda>>> GetTiendas()
     {
         var tiendas = await _repo.GetTiendasAsync();
