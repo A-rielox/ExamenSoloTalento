@@ -1,0 +1,124 @@
+<div class="min-h-screen flex flex-column surface-ground">
+   <div
+      class="surface-overlay px-6 flex justify-content-between relative lg:static"
+      style="min-height: 80px"
+   >
+      <a
+         class="cursor-pointer block lg:hidden text-700 align-self-center"
+         pStyleClass="@next"
+         enterClass="hidden"
+         leaveToClass="hidden"
+         [hideOnOutsideClick]="true"
+      >
+         <i class="pi pi-bars text-4xl"></i>
+      </a>
+
+      <div
+         class="flex-grow-1 justify-content-between hidden lg:flex absolute lg:static w-full surface-overlay left-0 top-100 z-1 shadow-2 lg:shadow-none"
+      >
+         <!--                       LEFT -->
+         <ul class="list-none p-0 m-0 flex select-none flex-column lg:flex-row">
+            <li>
+               <a
+                  [class]="aClass()"
+                  routerLink="/"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+               >
+                  <i class="pi pi-home mr-2"></i>
+               </a>
+            </li>
+
+            <!-- <ng-container *ngIf="accountService.currentUser$ | async"> -->
+            <ng-container>
+               <li>
+                  <a
+                     [class]="aClass()"
+                     routerLink="/tienda"
+                     routerLinkActive="active"
+                  >
+                     <i class="pi pi-book mr-2"></i>
+                     <span>Tienda</span>
+                  </a>
+               </li>
+
+               <li>
+                  <a
+                     [class]="aClass()"
+                     routerLink="/articulos"
+                     routerLinkActive="active"
+                  >
+                     <i class="pi pi-globe mr-2"></i>
+                     <span>Articulos</span>
+                  </a>
+               </li>
+            </ng-container>
+         </ul>
+
+         <!--                       RIGHT -->
+         <!--                       Inbox, Notificaciones y presentacion (texto) en pantalla chica -->
+         <ul
+            class="list-none p-0 m-0 flex select-none flex-column lg:flex-row border-top-1 surface-border lg:border-top-none"
+         >
+            <!-- DROPDOWN -->
+            <!-- <li *ngIf="!(accountService.currentUser$ | async)"> -->
+            <li>
+               <!-- <app-login-modal
+                  buttonText="Login"
+                  title="Bienvenido de vuelta"
+               ></app-login-modal> -->
+               <app-modal-login
+                  buttonText="Login"
+                  title="Bienvenido de vuelta"
+               ></app-modal-login>
+            </li>
+
+            <!-- <li
+               *ngIf="accountService.currentUser$ | async as user"
+               class="hidden lg:block"
+            > -->
+            <li class="hidden lg:block">
+               <a [class]="aClass()" (click)="menu.toggle($event)">
+                  <!-- <span>{{ user.knownAs | titlecase }}</span> -->
+                  <span>NombreCliente</span>
+                  <i class="pi pi-angle-down ml-auto lg:ml-3"></i>
+               </a>
+            </li>
+
+            <!-- los del dropdown -->
+            <p-menu #menu [popup]="true" [model]="items" class=""></p-menu>
+            <!-- menu en pantalla chica -->
+            <!-- <ng-container *ngIf="accountService.currentUser$ | async"> -->
+            <ng-container>
+               <li class="block lg:hidden">
+                  <a
+                     [class]="aClass()"
+                     routerLink="/members/edit"
+                     routerLinkActive="active"
+                  >
+                     <i class="pi pi-cog mr-2"></i>
+                     <span class="font-medium">Editar Perfil</span>
+                  </a>
+               </li>
+
+               <li (click)="logout()" class="block lg:hidden">
+                  <!-- routerLink="/"
+                  routerLinkActive="active" -->
+                  <a [class]="aClass()">
+                     <i class="pi pi-sign-out mr-2"></i>
+                     <span class="font-medium">Salir</span>
+                  </a>
+               </li>
+            </ng-container>
+         </ul>
+      </div>
+   </div>
+
+   <!--        CONTENIDO       -->
+   <!--        CONTENIDO       -->
+   <!--        CONTENIDO       -->
+   <!-- <div class="p-5 flex flex-column flex-auto"> -->
+   <div class="px-0 py-0 md:pt-5 md:px-5 width-container">
+      <ng-content></ng-content>
+   </div>
+</div>

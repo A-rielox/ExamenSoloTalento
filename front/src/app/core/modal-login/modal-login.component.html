@@ -1,0 +1,63 @@
+<a
+   class="flex h-full px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 border-left-2 lg:border-bottom-2 lg:border-left-none border-transparent hover:border-primary font-medium cursor-pointer transition-colors transition-duration-150"
+   (click)="openLogin()"
+>
+   <i class="pi pi-user text-base lg:text-2xl mr-2 lg:mr-0"></i>
+   <span class="block lg:hidden font-medium"> Entrar </span>
+</a>
+
+<!-- [style]="{ width: '80vw' }" -->
+<p-dialog
+   [(visible)]="visibleLogin"
+   appendTo="body"
+   [modal]="true"
+   [dismissableMask]="true"
+   [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+   [draggable]="false"
+   [transitionOptions]="'300ms'"
+>
+   <!-- <div class="surface-card p-4 border-round w-full lg:w-6"> -->
+   <div class="surface-card p-4 border-round w-full">
+      <div class="text-center mb-5">
+         <div class="text-900 text-3xl font-medium mb-3">
+            Bienvenido de vuelta!
+         </div>
+      </div>
+
+      <form #form="ngForm" (ngSubmit)="login()" autocomplete="off">
+         <label for="usuario" class="block text-900 font-medium mb-2">
+            Cliente
+         </label>
+         <input
+            id="usuario"
+            type="text"
+            placeholder="Nombre de Cliente"
+            pInputText
+            class="w-full mb-3 p-3"
+            [(ngModel)]="loginForm.username"
+            name="username"
+         />
+
+         <label for="pass" class="block text-900 font-medium mb-2"
+            >Password</label
+         >
+         <input
+            id="pass"
+            type="text"
+            placeholder="Password"
+            pInputText
+            class="w-full mb-3 p-3"
+            [(ngModel)]="loginForm.password"
+            name="password"
+         />
+
+         <button
+            pButton
+            label="Entrar"
+            icon="pi pi-user"
+            class="w-full p-3 mt-6"
+            type="submit"
+         ></button>
+      </form>
+   </div>
+</p-dialog>
