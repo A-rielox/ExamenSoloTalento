@@ -24,9 +24,8 @@ public class TiendasController : ControllerBase
 
     ////////////////////////////////////////////////////
     ////////////////////////////////////////////////////
-    // GET:  api/Tiendas/{id}
+    // GET:  api/Tiendas
     [HttpGet]
-    [Authorize]
     public async Task<ActionResult<List<Tienda>>> GetTiendas()
     {
         var tiendas = await _repo.GetTiendasAsync();

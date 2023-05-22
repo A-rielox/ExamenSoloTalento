@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from './store/store.module';
 import { ItemsModule } from './items/items.module';
 import { HomeModule } from './home/home.module';
+import { ShopModule } from './shop/shop.module';
 
 @NgModule({
    declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { HomeModule } from './home/home.module';
       CoreModule,
       StoreModule,
       ItemsModule,
+      ShopModule,
       HomeModule,
    ],
    providers: [],
