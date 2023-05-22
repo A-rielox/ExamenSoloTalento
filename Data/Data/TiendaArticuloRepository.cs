@@ -24,7 +24,7 @@ public class TiendaArticuloRepository : ITiendaArticuloRepository
         var articulo = await _context.Articulos
                                      .Where(a => a.Codigo == tiendaArticulo.ArticuloId)
                                      .FirstOrDefaultAsync();
-        articulo.Stock = articulo.Stock - tiendaArticulo.TiendaArticuloStock;
+        articulo.Stock -= tiendaArticulo.TiendaArticuloStock;
 
 
         _context.TiendaArticulos.Add(tiendaArticulo);
@@ -41,11 +41,11 @@ public class TiendaArticuloRepository : ITiendaArticuloRepository
     ////////////////////////////////////////////////
     ///////////////////////////////////////////////////
     //
-    public async Task<TiendaArticulo> GetTiendaArticuloByCodigoAsync(int id)
+    public async Task<TiendaArticulo> GetTiendaArticuloByIdAsync(int id)
     {
         var tiendaArticulo = await _context.TiendaArticulos
                                            .FirstOrDefaultAsync(ta => ta.Id == id);
-
+        
         return tiendaArticulo;
     }
 
@@ -65,9 +65,23 @@ public class TiendaArticuloRepository : ITiendaArticuloRepository
     ////////////////////////////////////////////////
     ///////////////////////////////////////////////////
     //
-    public void UpdateTiendaArticulo(TiendaArticulo tiendaArticulo)
+    public async void UpdateTiendaArticulo(TiendaArticulo tiendaArticulo, int stockInicial,
+                                     int stockFinal, int articuloId)
     {
-        throw new NotImplementedException();
+        var articulo = await _context.Articulos
+                                     .FirstOrDefaultAsync(a => a.Codigo == articuloId);
+        
+        if(stockInicial > stockFinal)
+        {
+            articulo.Stock += stockInicial - stockFinal; 
+        }
+        
+        if (stockFinal > stockInicial)
+        {
+            articulo.Stock -= stockFinal - stockInicial;
+        }
+
+        tiendaArticulo.TiendaArticuloStock = stockFinal;
     }
 
     ////////////////////////////////////////////////

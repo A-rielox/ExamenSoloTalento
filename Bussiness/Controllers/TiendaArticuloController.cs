@@ -47,7 +47,7 @@ public class TiendaArticuloController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteTiendaArticulo(int id)
     {
-        var tiendaArticulo = await _repo.GetTiendaArticuloByCodigoAsync(id);
+        var tiendaArticulo = await _repo.GetTiendaArticuloByIdAsync(id);
 
         if (tiendaArticulo == null) return NotFound("No existe ese item.");
 
@@ -58,6 +58,22 @@ public class TiendaArticuloController : ControllerBase
         return BadRequest("No se pudo borrar el item.");
     }
 
+
+    ////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////
+    // PUT:  api/TiendaArticulo
+    [HttpPut]
+    public async Task<ActionResult> UpdateTiendaArticulo(TiendaArticuloUpdateDto updateDto)
+    {
+        var tiendaArticulo = await _repo.GetTiendaArticuloByIdAsync(updateDto.TiendaArticuloId);
+
+        _repo.UpdateTiendaArticulo(tiendaArticulo, updateDto.StockInicial,
+                                   updateDto.StockFinal, updateDto.ArticuloId);
+
+        if (await _repo.SaveAllAsync()) return NoContent();
+
+        return BadRequest("No se pudo editar el item.");
+    }
 
     ////////////////////////////////////////////////
     ///////////////////////////////////////////////////

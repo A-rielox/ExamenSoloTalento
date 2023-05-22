@@ -9,10 +9,11 @@ public interface ITiendaArticuloRepository
 
     void DeleteTiendaArticulo(TiendaArticulo tiendaArticulo);
 
-    void UpdateTiendaArticulo(TiendaArticulo tiendaArticulo);
+    void UpdateTiendaArticulo(TiendaArticulo tiendaArticulo, int stockInicial,
+                              int stockFinal, int articuloId);
 
 
-    Task<TiendaArticulo> GetTiendaArticuloByCodigoAsync(int id);
+    Task<TiendaArticulo> GetTiendaArticuloByIdAsync(int id);
 
     Task<List<TiendaArticulo>> GetAllTiendaArticulosAsync(int tiendaId);
 
