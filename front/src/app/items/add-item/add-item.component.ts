@@ -4,6 +4,7 @@ import { Articulo } from 'src/app/shared/_models/articulo';
 import { NewArticulo } from 'src/app/shared/_models/newArticulo';
 import { ItemsService } from '../items.service';
 import { Router } from '@angular/router';
+import { EditArticulo } from 'src/app/shared/_models/editArticulo';
 
 @Component({
    selector: 'app-add-item',
@@ -28,8 +29,6 @@ export class AddItemComponent implements OnInit {
    ) {
       const navigation = this.router.getCurrentNavigation();
       this.articuloToEdit = navigation?.extras.state?.['articulo'];
-
-      console.log(this.articuloToEdit, '######');
 
       this.edit = this.articuloToEdit ? true : false;
 
@@ -112,8 +111,15 @@ export class AddItemComponent implements OnInit {
       } else if (this.componentMode === 'Edit') {
          // prettier-ignore
          const editArticulo: EditArticulo = {
-            descripcion, precio, imagen, stock, tipoId: tipo[0].tipoId,
+            codigo, descripcion, precio, imagen, stock, tipoId: tipo[0].tipoId,
          };
+
+         this.itemsService.editArticulo(editArticulo).subscribe({
+            next: () => {
+               this.ArticulosForm.reset();
+               this.router.navigateByUrl('/articulos');
+            },
+         });
 
          //    {
          //       "codigo": 13,
@@ -131,21 +137,21 @@ export class AddItemComponent implements OnInit {
       // if (!category || !title || !content) return;
       // let cat = category[0]?.name;
 
-      if (this.componentMode === 'New') {
-      } else if (this.componentMode === 'Edit') {
-         // const editedPost: EditedPost = {
-         //    id: id,
-         //    title: title,
-         //    category: cat,
-         //    content: content,
-         // };
-         // this.postsService.editPost(editedPost).subscribe({
-         //    next: (_) => {
-         //       this.callNotificationAndLoadRecipes(this.textL.postEdited);
-         //       this.PostsForm.reset();
-         //       this.router.navigateByUrl('/posts');
-         //    },
-         // });
-      }
+      // if (this.componentMode === 'New') {
+      // } else if (this.componentMode === 'Edit') {
+      // const editedPost: EditedPost = {
+      //    id: id,
+      //    title: title,
+      //    category: cat,
+      //    content: content,
+      // };
+      // this.postsService.editPost(editedPost).subscribe({
+      //    next: (_) => {
+      //       this.callNotificationAndLoadRecipes(this.textL.postEdited);
+      //       this.PostsForm.reset();
+      //       this.router.navigateByUrl('/posts');
+      //    },
+      // });
+      // }
    }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Articulo } from '../shared/_models/articulo';
 import { NewArticulo } from '../shared/_models/newArticulo';
+import { EditArticulo } from '../shared/_models/editArticulo';
 
 @Injectable({
    providedIn: 'root',
@@ -22,5 +23,9 @@ export class ItemsService {
    deleteArticulo(codigo: number) {
       console.log('en el service');
       return this.http.delete(this.baseUrl + 'articulos/' + codigo);
+   }
+
+   editArticulo(editArticulo: EditArticulo) {
+      return this.http.put(this.baseUrl + 'articulos', editArticulo);
    }
 }
