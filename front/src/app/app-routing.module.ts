@@ -5,13 +5,22 @@ import { ItemsComponent } from './items/items.component';
 import { AddItemComponent } from './items/add-item/add-item.component';
 import { ShopComponent } from './shop/shop.component';
 import { AddShopComponent } from './shop/add-shop/add-shop.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
    { path: '', component: HomeComponent },
-   { path: 'articulos', component: ItemsComponent },
-   { path: 'articulos/edit', component: AddItemComponent },
-   { path: 'tiendas', component: ShopComponent },
-   { path: 'tiendas/edit', component: AddShopComponent },
+   {
+      path: '',
+      runGuardsAndResolvers: 'always',
+      canActivate: [AuthGuard],
+      children: [
+         { path: 'articulos', component: ItemsComponent },
+         { path: 'articulos/edit', component: AddItemComponent },
+         { path: 'tiendas', component: ShopComponent },
+         { path: 'tiendas/edit', component: AddShopComponent },
+      ],
+   },
+
    { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
