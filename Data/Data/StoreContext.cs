@@ -19,6 +19,8 @@ public class StoreContext : DbContext
     public DbSet<Articulo> Articulos { get; set; }
     public DbSet<Tipo> Tipos { get; set; }
 
+    public DbSet<TiendaArticulo> TiendaArticulos { get; set; }
+
 
 
     ////////////////////////////////////////////////////

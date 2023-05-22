@@ -20,5 +20,17 @@ public class AutoMapperProfiles : Profile
         CreateMap<Tienda, TiendaDto>().ReverseMap();
         CreateMap<Tienda, TiendaCrearDto>().ReverseMap();
         CreateMap<Tienda, TiendaUpdateDto>().ReverseMap();
+
+
+        CreateMap<TiendaArticulo, TiendaArticuloCrearDto>()
+                 .ForMember(dest => dest.StockAdded, opt => opt.MapFrom(src => 
+                                                            src.TiendaArticuloStock))
+                 .ReverseMap();
+        CreateMap<TiendaArticulo, TiendaArticuloDto>()
+                 .ForMember(dest => dest.Stock, opt => opt.MapFrom(src =>
+                                                            src.TiendaArticuloStock))
+                 .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src =>
+                                                             src.Articulo.Descripcion))
+                 .ReverseMap();
     }
 }

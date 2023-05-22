@@ -16,5 +16,9 @@ public class Articulo : BaseEntity
 
     public Tipo Tipo { get; set; }
     public int TipoId { get; set; }
+
+
+    //////////////////////////////
+    public List<TiendaArticulo> EnTiendas { get; set; }
 }
     

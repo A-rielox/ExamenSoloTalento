@@ -42,6 +42,7 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 builder.Services.AddScoped<IArticuloRepository, ArticuloRepository>();
 builder.Services.AddScoped<ITiendaRepository, TiendaRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<ITiendaArticuloRepository, TiendaArticuloRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

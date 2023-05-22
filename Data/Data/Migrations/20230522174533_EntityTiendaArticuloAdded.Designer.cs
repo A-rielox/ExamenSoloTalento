@@ -3,6 +3,7 @@ using System;
 using Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20230522174533_EntityTiendaArticuloAdded")]
+    partial class EntityTiendaArticuloAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -76,9 +79,6 @@ namespace Data.Data.Migrations
 
                     b.Property<string>("NombreSucursal")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("TiendaArticuloStock")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("TiendaId")
                         .HasColumnType("INTEGER");
