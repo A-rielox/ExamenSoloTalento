@@ -9,6 +9,10 @@ import { MenuModule } from 'primeng/menu';
 import { DropdownModule } from 'primeng/dropdown';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 @NgModule({
    declarations: [],
@@ -21,6 +25,10 @@ import { InputTextModule } from 'primeng/inputtext';
       DropdownModule,
       DialogModule,
       InputTextModule,
+      MultiSelectModule,
+      InputTextareaModule,
+      InputNumberModule,
+      ConfirmPopupModule,
    ],
    exports: [
       StyleClassModule,
@@ -30,6 +38,10 @@ import { InputTextModule } from 'primeng/inputtext';
       DropdownModule,
       DialogModule,
       InputTextModule,
+      MultiSelectModule,
+      InputTextareaModule,
+      InputNumberModule,
+      ConfirmPopupModule,
    ],
 })
 export class PrimeModule {}

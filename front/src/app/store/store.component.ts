@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Articulo } from '../shared/_models/articulo';
-import { StoreService } from './store.service';
 
 @Component({
    selector: 'app-store',
@@ -8,16 +6,9 @@ import { StoreService } from './store.service';
    styleUrls: ['./store.component.css'],
 })
 export class StoreComponent implements OnInit {
-   articulos: Articulo[] = [];
+   constructor() {}
 
-   constructor(private storeService: StoreService) {}
-
-   ngOnInit(): void {
-      this.storeService.getProducts().subscribe({
-         next: (res) => (this.articulos = res),
-         error: (err) => console.log(err),
-      });
-   }
+   ngOnInit(): void {}
 }
 
 // codigo: 1

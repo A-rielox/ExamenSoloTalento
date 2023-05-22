@@ -10,6 +10,8 @@ import { PrimeModule } from './_prime/prime.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from './store/store.module';
+import { ItemsModule } from './items/items.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
    declarations: [AppComponent],
@@ -23,6 +25,8 @@ import { StoreModule } from './store/store.module';
       ReactiveFormsModule,
       CoreModule,
       StoreModule,
+      ItemsModule,
+      HomeModule,
    ],
    providers: [],
    bootstrap: [AppComponent],

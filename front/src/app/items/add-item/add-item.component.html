@@ -1,0 +1,81 @@
+<!-- <div
+   class="surface-overlay py-3 px-6 shadow-1 md:flex align-items-center justify-content-between relative static"
+   style="min-height: 80px"
+> -->
+<div
+   class="surface-overlay py-3 px-6 shadow-1 align-items-center relative static w-full"
+   style="min-height: 80px"
+>
+   <div class="flex align-items-center">
+      <i class="pi pi-file-edit text-2xl mr-3 text-500"></i>
+      <span class="text-3xl font-medium text-900">{{ title }}</span>
+   </div>
+</div>
+
+<div class="p-0 pt-3 md:p-6 md:p-2 lg:p-8 lg:pt-3 contenedor">
+   <div class="m-5 mt-0 flex flex-column" *ngIf="allCats">
+      <form
+         class="formgrid grid"
+         [formGroup]="ArticulosForm"
+         (ngSubmit)="sendArticulo()"
+         autocomplete="off"
+      >
+         <div class="field col-12">
+            <!--              DESCRIPCION -->
+            <app-text-input
+               [formControl]="$any(ArticulosForm.controls['descripcion'])"
+               [label]="'Descripcion'"
+            ></app-text-input>
+         </div>
+
+         <div class="field col-6">
+            <!--              PRECIO -->
+            <app-num-input
+               [formControl]="$any(ArticulosForm.controls['precio'])"
+               [label]="'Precio'"
+               [min]="1"
+               [max]="99999"
+            ></app-num-input>
+         </div>
+         <div class="field col-6">
+            <!--              STOCK -->
+            <app-num-input
+               [formControl]="$any(ArticulosForm.controls['stock'])"
+               [label]="'Stock'"
+               [min]="1"
+               [max]="12"
+            ></app-num-input>
+         </div>
+
+         <div class="field col-12">
+            <!--              IMAGEN -->
+            <app-text-input
+               [formControl]="$any(ArticulosForm.controls['imagen'])"
+               [label]="'Imagen'"
+            ></app-text-input>
+         </div>
+
+         <div class="flex flex-column field col-12 md:col-6">
+            <label class="mb-2">Tipo</label>
+            <p-multiSelect
+               formControlName="tipo"
+               [options]="allCats"
+               defaultLabel="Tipo / Clasificación"
+               optionLabel="name"
+               display="chip"
+               [selectionLimit]="1"
+               [showToggleAll]="false"
+               [filter]="false"
+               required
+            ></p-multiSelect>
+         </div>
+      </form>
+
+      <p-button
+         label="Guardar"
+         icon="pi pi-check"
+         styleClass="p-button"
+         (onClick)="sendArticulo()"
+      ></p-button>
+   </div>
+</div>

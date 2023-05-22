@@ -8,7 +8,7 @@ public class ArticuloCrearDto
     public string Descripcion { get; set; }
     [Required]
     public int? Precio { get; set; }
-    [Required]
+    
     public string Imagen { get; set; }
     [Required]
     public int? Stock { get; set; }
