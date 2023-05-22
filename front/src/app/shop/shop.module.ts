@@ -13,11 +13,11 @@ import { SharedModule } from '../shared/shared.module';
    declarations: [ShopComponent, AddShopComponent],
    imports: [
       CommonModule,
-      FormsModule,
       PrimeModule,
+      SharedModule,
+      FormsModule,
       ReactiveFormsModule,
       ButtonModule,
-      SharedModule,
    ],
 })
 export class ShopModule {}

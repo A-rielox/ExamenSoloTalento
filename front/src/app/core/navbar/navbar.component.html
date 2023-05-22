@@ -29,8 +29,7 @@
                </a>
             </li>
 
-            <!-- <ng-container *ngIf="accountService.currentUser$ | async"> -->
-            <ng-container>
+            <ng-container *ngIf="accountService.currentUser$ | async">
                <li>
                   <a
                      [class]="aClass()"
@@ -61,22 +60,20 @@
             class="list-none p-0 m-0 flex select-none flex-column lg:flex-row border-top-1 surface-border lg:border-top-none"
          >
             <!-- DROPDOWN -->
-            <!-- <li *ngIf="!(accountService.currentUser$ | async)"> -->
-            <li>
+            <li *ngIf="!(accountService.currentUser$ | async)">
                <app-modal-login
                   buttonText="Login"
                   title="Bienvenido de vuelta"
                ></app-modal-login>
             </li>
 
-            <!-- <li
+            <li
                *ngIf="accountService.currentUser$ | async as user"
                class="hidden lg:block"
-            > -->
-            <li class="hidden lg:block">
+            >
+               <!-- <li class="hidden lg:block"> -->
                <a [class]="aClass()" (click)="menu.toggle($event)">
-                  <!-- <span>{{ user.knownAs | titlecase }}</span> -->
-                  <span>NombreCliente</span>
+                  <span>{{ user.nombre | titlecase }}</span>
                   <i class="pi pi-angle-down ml-auto lg:ml-3"></i>
                </a>
             </li>
@@ -84,8 +81,7 @@
             <!-- los del dropdown -->
             <p-menu #menu [popup]="true" [model]="items" class=""></p-menu>
             <!-- menu en pantalla chica -->
-            <!-- <ng-container *ngIf="accountService.currentUser$ | async"> -->
-            <ng-container>
+            <ng-container *ngIf="accountService.currentUser$ | async">
                <li class="block lg:hidden">
                   <a
                      [class]="aClass()"
@@ -98,8 +94,6 @@
                </li>
 
                <li (click)="logout()" class="block lg:hidden">
-                  <!-- routerLink="/"
-                  routerLinkActive="active" -->
                   <a [class]="aClass()">
                      <i class="pi pi-sign-out mr-2"></i>
                      <span class="font-medium">Salir</span>

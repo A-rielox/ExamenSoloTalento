@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 interface LoginForm {
-   username: string;
+   email: string;
    password: string;
 }
 
@@ -14,9 +16,17 @@ export class ModalLoginComponent implements OnInit {
    loginForm: LoginForm = {} as LoginForm;
    visibleLogin = false;
 
-   constructor() {}
+   constructor(
+      private accountService: AccountService,
+      private router: Router
+   ) {}
 
-   ngOnInit(): void {}
+   ngOnInit(): void {
+      // QUITAR
+      this.loginForm.email = 'ariel@test.com';
+      this.loginForm.password = 'P@ssword1';
+      // QUITAR
+   }
 
    openLogin() {
       this.visibleLogin = !this.visibleLogin;
@@ -24,29 +34,14 @@ export class ModalLoginComponent implements OnInit {
 
    login() {
       console.log('login');
-      //    let notSummary = this.lang === 'Eng' ? 'Hello' : 'Hola.';
-      //    let notDetail =
-      //       this.lang === 'Eng'
-      //          ? "It's good to have you back."
-      //          : 'Que bueno tenerte de vuelta.';
 
-      //    this.memberService.resetUserParams();
-      //    this.recipesService.resetRecipeParams();
-      //    this.postsService.resetPostParams();
+      this.accountService.login(this.loginForm).subscribe({
+         next: () => {
+            this.router.navigateByUrl('/articulos');
+         },
+         error: (err) => {},
+      });
 
-      //    this.accountService.login(this.loginForm).subscribe({
-      //       next: () => {
-      //          this.router.navigateByUrl('/members');
-
-      //          this.notification.addNoti({
-      //             severity: 'success',
-      //             summary: notSummary,
-      //             detail: notDetail,
-      //          });
-      //       },
-      //       error: (err) => {},
-      //    });
-
-      //    this.visibleLogin = false;
+      this.visibleLogin = false;
    }
 }

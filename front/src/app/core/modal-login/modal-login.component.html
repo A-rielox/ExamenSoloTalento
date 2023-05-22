@@ -26,16 +26,16 @@
 
       <form #form="ngForm" (ngSubmit)="login()" autocomplete="off">
          <label for="usuario" class="block text-900 font-medium mb-2">
-            Cliente
+            Email Cliente
          </label>
          <input
             id="usuario"
             type="text"
-            placeholder="Nombre de Cliente"
+            placeholder="email@email.com"
             pInputText
             class="w-full mb-3 p-3"
-            [(ngModel)]="loginForm.username"
-            name="username"
+            [(ngModel)]="loginForm.email"
+            name="email"
          />
 
          <label for="pass" class="block text-900 font-medium mb-2"

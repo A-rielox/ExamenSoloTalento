@@ -19,13 +19,12 @@ export class AddItemComponent implements OnInit {
    ////////
    componentMode: string = 'New';
    ArticulosForm: FormGroup = new FormGroup({});
-   // postToEdit?: any;
    allCats?: any[];
 
    constructor(
       private fb: FormBuilder,
-      private itemsService: ItemsService,
-      private router: Router
+      private router: Router,
+      private itemsService: ItemsService
    ) {
       const navigation = this.router.getCurrentNavigation();
       this.articuloToEdit = navigation?.extras.state?.['articulo'];
@@ -120,38 +119,6 @@ export class AddItemComponent implements OnInit {
                this.router.navigateByUrl('/articulos');
             },
          });
-
-         //    {
-         //       "codigo": 13,
-         //       "descripcion": "Cómodo y elegante par de zapatos.",
-         //       "precio": 2220,
-         //       "imagen": "https://res.cloudinary.com/dxrrk3nvu/image/upload/v1684694911/LaApp/n9jz8yb1dsh0yemobqjr.jpg",
-         //       "stock": 2220,
-         //       "tipoId": 3
-         //   }
       }
-
-      ////////////////////////////////////////////////
-
-      // const { category, title, content, id } = this.PostsForm.value;
-      // if (!category || !title || !content) return;
-      // let cat = category[0]?.name;
-
-      // if (this.componentMode === 'New') {
-      // } else if (this.componentMode === 'Edit') {
-      // const editedPost: EditedPost = {
-      //    id: id,
-      //    title: title,
-      //    category: cat,
-      //    content: content,
-      // };
-      // this.postsService.editPost(editedPost).subscribe({
-      //    next: (_) => {
-      //       this.callNotificationAndLoadRecipes(this.textL.postEdited);
-      //       this.PostsForm.reset();
-      //       this.router.navigateByUrl('/posts');
-      //    },
-      // });
-      // }
    }
 }

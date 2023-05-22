@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from './core/account.service';
+import { User } from './shared/_models/user';
 
 @Component({
    selector: 'app-root',
@@ -6,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
    styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-   constructor() {}
+   constructor(private accountService: AccountService) {}
 
-   ngOnInit(): void {}
+   ngOnInit(): void {
+      this.setCurrentUser();
+   }
+
+   setCurrentUser() {
+      const localUser = localStorage.getItem('user');
+
+      if (!localUser) return;
+
+      const user: User = JSON.parse(localUser);
+
+      this.accountService.setCurrentUser(user);
+   }
 }

@@ -1,1 +1,43 @@
-<p>add-shop works!</p>
+<div
+   class="surface-overlay py-3 px-6 shadow-1 align-items-center relative static w-full"
+   style="min-height: 80px"
+>
+   <div class="flex align-items-center">
+      <i class="pi pi-file-edit text-2xl mr-3 text-500"></i>
+      <span class="text-3xl font-medium text-900">{{ title }}</span>
+   </div>
+</div>
+
+<div class="p-0 pt-3 md:p-6 md:p-2 lg:p-8 lg:pt-3 contenedor">
+   <div class="m-5 mt-0 flex flex-column">
+      <form
+         class="formgrid grid"
+         [formGroup]="TiendasForm"
+         (ngSubmit)="sendTienda()"
+         autocomplete="off"
+      >
+         <div class="field col-12">
+            <!--              SUCURSAL -->
+            <app-text-input
+               [formControl]="$any(TiendasForm.controls['sucursal'])"
+               [label]="'Sucursal'"
+            ></app-text-input>
+         </div>
+
+         <div class="field col-12">
+            <!--              DIRECCION -->
+            <app-text-input
+               [formControl]="$any(TiendasForm.controls['direccion'])"
+               [label]="'Direccion'"
+            ></app-text-input>
+         </div>
+      </form>
+
+      <p-button
+         label="Guardar"
+         icon="pi pi-check"
+         styleClass="p-button"
+         (onClick)="sendTienda()"
+      ></p-button>
+   </div>
+</div>

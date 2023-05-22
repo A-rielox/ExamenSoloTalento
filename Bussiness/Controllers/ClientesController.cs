@@ -30,7 +30,7 @@ public class ClientesController : ControllerBase
 
     /////////////////////////////////////////
     /////////////////////////////////////////
-    // POST: account/login 
+    // POST: Clientes/login 
     [HttpPost("login")]
     public async Task<ActionResult<ClientDto>> Login(LoginDto loginDto)
     {
@@ -54,7 +54,7 @@ public class ClientesController : ControllerBase
 
     /////////////////////////////////////////
     /////////////////////////////////////////
-    // POST: account/register
+    // POST: Clientes/register
     [HttpPost("register")]
     public async Task<ActionResult<ClientDto>> Register(RegisterDto registerDto)
     {

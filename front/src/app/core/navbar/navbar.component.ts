@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
    selector: 'app-navbar',
@@ -10,24 +12,19 @@ export class NavbarComponent implements OnInit {
    items: MenuItem[] = [];
    navItems: MenuItem[] = [];
 
-   constructor() {}
+   constructor(public accountService: AccountService, private router: Router) {}
 
    ngOnInit(): void {
       this.setItems();
    }
 
    logout() {
-      // this.accountService.logout();
-      // this.router.navigateByUrl('/');
+      this.accountService.logout();
+      this.router.navigateByUrl('/');
    }
 
    setItems() {
       this.items = [
-         {
-            label: 'Editar Perfil',
-            icon: 'pi pi-cog',
-            routerLink: ['/members/edit'],
-         },
          {
             label: 'Salir',
             icon: 'pi pi-sign-out',

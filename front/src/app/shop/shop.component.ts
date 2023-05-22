@@ -26,7 +26,6 @@ export class ShopComponent implements OnInit {
    loadTiendas() {
       this.shopService.getTiendas().subscribe({
          next: (res) => {
-            console.log(res);
             this.tiendas = res;
          },
          error: (err) => console.log(err),
