@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { PrimeModule } from './_prime/prime.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +14,7 @@ import { ItemsModule } from './items/items.module';
 import { HomeModule } from './home/home.module';
 import { ShopModule } from './shop/shop.module';
 import { ArticuloTiendaModule } from './articulo-tienda/articulo-tienda.module';
+import { SendTokenInterceptor } from './_interceptors/send-token.interceptor';
 
 @NgModule({
    declarations: [AppComponent],
@@ -32,7 +33,13 @@ import { ArticuloTiendaModule } from './articulo-tienda/articulo-tienda.module';
       HomeModule,
       ArticuloTiendaModule,
    ],
-   providers: [],
+   providers: [
+      {
+         provide: HTTP_INTERCEPTORS,
+         useClass: SendTokenInterceptor,
+         multi: true,
+      },
+   ],
    bootstrap: [AppComponent],
 })
 export class AppModule {}

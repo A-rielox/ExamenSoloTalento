@@ -20,6 +20,7 @@ public class StoreContext : DbContext
     public DbSet<Tipo> Tipos { get; set; }
 
     public DbSet<TiendaArticulo> TiendaArticulos { get; set; }
+    public DbSet<Carrito> Carritos { get; set; }
 
 
 

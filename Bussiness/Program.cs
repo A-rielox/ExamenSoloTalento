@@ -43,6 +43,7 @@ builder.Services.AddScoped<IArticuloRepository, ArticuloRepository>();
 builder.Services.AddScoped<ITiendaRepository, TiendaRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<ITiendaArticuloRepository, TiendaArticuloRepository>();
+builder.Services.AddScoped<ICarritoRepository, CarritoRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

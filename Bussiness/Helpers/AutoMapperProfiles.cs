@@ -32,5 +32,8 @@ public class AutoMapperProfiles : Profile
                  .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src =>
                                                              src.Articulo.Descripcion))
                  .ReverseMap();
+
+
+        CreateMap<Carrito, CarritoCreateDto>().ReverseMap();
     }
 }
