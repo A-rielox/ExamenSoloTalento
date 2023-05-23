@@ -14,17 +14,14 @@ public class ClientesController : ControllerBase
     private readonly UserManager<Cliente> _userManager;
     private readonly SignInManager<Cliente> _signInManager;
     private readonly ITokenService _tokenService;
-    private readonly IMapper _mapper;
 
     public ClientesController(UserManager<Cliente> userManager,
                               SignInManager<Cliente> signInManager,
-                              ITokenService tokenService,
-                              IMapper mapper)
+                              ITokenService tokenService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _tokenService = tokenService;
-        _mapper = mapper;
     }
 
 

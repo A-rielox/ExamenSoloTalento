@@ -121,10 +121,53 @@ export class ComprarArticulosComponent implements OnInit {
       };
 
       this.carrito.push(newArticulo);
-
-      console.log(this.carrito);
    }
 
+   comprar() {
+      // UPDATE CANTIDADES EN TIENDA
+      for (const articuloEnTienda of this.carrito) {
+         let tiendaArticulo = this.articulosEnTienda.filter(
+            (ar) => ar.articuloId === articuloEnTienda.codigo
+         )[0];
+
+         const stockFinal = tiendaArticulo.stock - articuloEnTienda.cantidad;
+
+         const { stock: stockInicial, articuloId } = tiendaArticulo;
+
+         const updateObj = {
+            tiendaArticuloId: tiendaArticulo.id,
+            stockInicial,
+            stockFinal,
+            articuloId,
+         };
+
+         this.articuloTiendaService.updateArticulo(updateObj).subscribe({
+            next: () => {
+               this.loadArticles();
+               this.loadArticulosTienda();
+            },
+         });
+      }
+
+      let detalleCarrito = [
+         {
+            subTotal: this.getSubtotal(),
+            tax: this.getTax(),
+            totalCarrito: this.getTotalCarrito(),
+         },
+         [...this.carrito],
+      ];
+
+      // CARRITO A BACK
+      const carritoBack = JSON.stringify(detalleCarrito);
+      console.log(carritoBack);
+
+      // RESETEO FORMA Y  CARRITO
+      this.Forma.setValue({ anadirCantidad: 0 });
+      this.carrito = [];
+   }
+
+   //////////////////////////////////////////////////////
    getSubtotal() {
       const suma = this.carrito.reduce((t, c) => t + c.precio * c.cantidad, 0);
       return suma;

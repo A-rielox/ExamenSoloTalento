@@ -105,8 +105,21 @@
 <!--  -->
 
 <div class="surface-section px-4 py-4 md:px-6 lg:px-8 mt-5">
-   <div class="text-900 font-bold text-4xl my-2">Tu Carrito 🛒</div>
-   <p class="text-700 text-xl mt-0 mb-4 p-0">Datos de pago y envío.</p>
+   <div class="flex justify-content-between">
+      <div>
+         <div class="text-900 font-bold text-4xl my-2">Tu Carrito 🛒</div>
+         <p class="text-700 text-xl mt-0 mb-4 p-0">Datos de pago y envío.</p>
+      </div>
+
+      <!-- (click)="anadirArticulo(articulo)" -->
+      <button
+         (click)="$event.stopPropagation()"
+         (click)="comprar()"
+         pButton
+         label="Comprar"
+         class="p-button-sm ml-1"
+      ></button>
+   </div>
    <div
       style="
          height: 3px;
