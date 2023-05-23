@@ -16,17 +16,14 @@ namespace Bussiness.Controllers;
 public class CarritoController : ControllerBase
 {
     private readonly UserManager<Cliente> _userManager;
-    private readonly AppIdentityDbContext _idenContext;
     private readonly ICarritoRepository _repo;
     private readonly IMapper _mapper;
 
     public CarritoController(UserManager<Cliente> userManager, 
-                             AppIdentityDbContext idenContext,
                              ICarritoRepository repo,
                              IMapper mapper)
     {
         _userManager = userManager;
-        _idenContext = idenContext;
         _repo = repo;
         _mapper = mapper;
     }

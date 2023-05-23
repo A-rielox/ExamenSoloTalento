@@ -23,7 +23,7 @@ export class ModalLoginComponent implements OnInit {
 
    ngOnInit(): void {
       // QUITAR
-      this.loginForm.email = 'ariel@test.com';
+      this.loginForm.email = 'emma@test.com';
       this.loginForm.password = 'P@ssword1';
       // QUITAR
    }

@@ -14,6 +14,7 @@ import { ArticuloCarrito } from 'src/app/shared/_models/articuloCarrito';
 import { ArticuloEnTienda } from 'src/app/shared/_models/articuloEnTienda';
 import { InfoTienda } from 'src/app/shared/_models/infoTienda';
 import { User } from 'src/app/shared/_models/user';
+import { StoreService } from '../store.service';
 
 @Component({
    selector: 'app-comprar-articulos',
@@ -35,7 +36,8 @@ export class ComprarArticulosComponent implements OnInit {
       private articuloTiendaService: ArticuloTiendaService,
       private itemsService: ItemsService,
       private activatedRoute: ActivatedRoute,
-      private accountService: AccountService
+      private accountService: AccountService,
+      private storeService: StoreService
    ) {
       this.activatedRoute.params.subscribe({
          next: (res) => {
@@ -159,12 +161,15 @@ export class ComprarArticulosComponent implements OnInit {
       ];
 
       // CARRITO A BACK
-      const carritoBack = JSON.stringify(detalleCarrito);
+      const carritoBack = { carrito: JSON.stringify(detalleCarrito) };
       console.log(carritoBack);
-
-      // RESETEO FORMA Y  CARRITO
-      this.Forma.setValue({ anadirCantidad: 0 });
-      this.carrito = [];
+      this.storeService.sendCarrito(carritoBack).subscribe({
+         next: () => {
+            // RESETEO FORMA Y  CARRITO
+            this.Forma.setValue({ anadirCantidad: 0 });
+            this.carrito = [];
+         },
+      });
    }
 
    //////////////////////////////////////////////////////
