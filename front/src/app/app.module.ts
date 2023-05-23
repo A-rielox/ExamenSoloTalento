@@ -13,6 +13,7 @@ import { StoreModule } from './store/store.module';
 import { ItemsModule } from './items/items.module';
 import { HomeModule } from './home/home.module';
 import { ShopModule } from './shop/shop.module';
+import { ArticuloTiendaModule } from './articulo-tienda/articulo-tienda.module';
 
 @NgModule({
    declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { ShopModule } from './shop/shop.module';
       ItemsModule,
       ShopModule,
       HomeModule,
+      ArticuloTiendaModule,
    ],
    providers: [],
    bootstrap: [AppComponent],

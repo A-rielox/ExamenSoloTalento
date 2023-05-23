@@ -1,0 +1,118 @@
+<!-- <div *ngIf="messages && messages.length > 0"> -->
+<div>
+   <p-table
+      [value]="articulos"
+      [tableStyle]="{ 'min-width': '40rem' }"
+      [rowHover]="true"
+      styleClass="p-datatable-striped"
+   >
+      <ng-template pTemplate="header">
+         <tr>
+            <th>
+               <span class="font-semibold text-sm text-color-secondary"
+                  >Código</span
+               >
+            </th>
+            <th>
+               <span class="font-semibold text-sm text-color-secondary"
+                  >Descripción Artículo</span
+               >
+            </th>
+            <th>
+               <span class="font-semibold text-sm text-color-secondary"
+                  >Stock</span
+               >
+            </th>
+            <th>
+               <span class="font-semibold text-sm text-color-secondary"
+                  >Añadir / Stock en tienda</span
+               >
+            </th>
+            <th></th>
+         </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-articulo>
+         <!-- [hidden]="loading" -->
+         <tr class="cursor-pointer">
+            <td>
+               <div
+                  class="flex align-items-center justify-content-center gap-3"
+               >
+                  <p class="mt-0 mb-2 font-medium text-lg text-color-primary">
+                     {{ articulo.codigo }}
+                  </p>
+               </div>
+            </td>
+
+            <td>
+               <p class="mt-0 mb-2 font-normal text-base text-color-secondary">
+                  {{ articulo.descripcion }}
+               </p>
+            </td>
+
+            <td>
+               <p
+                  class="mt-0 mb-2 font-normal text-base text-color-secondary flex justify-content-center"
+               >
+                  {{ articulo.stock }}
+               </p>
+            </td>
+
+            <td>
+               <!-- (click)="deleteMessage(message.id)" -->
+               <button
+                  *ngIf="!isInStock(articulo.codigo)"
+                  (click)="$event.stopPropagation()"
+                  (click)="anadir(articulo)"
+                  pButton
+                  label="Añadir"
+                  icon="pi pi-plus"
+               ></button>
+
+               <form
+                  class="flex flex-wrap align-items-center"
+                  *ngIf="isInStock(articulo.codigo)"
+                  [formGroup]="Forma"
+               >
+                  <!-- <app-num-input
+                     [formControl]="$any(valor(articulo.codigo))"
+                     [label]="''"
+                     [min]="1"
+                     [max]="articulo.stock"
+                     (onInput)="onInput($event)"
+                  ></app-num-input> -->
+
+                  <p-inputNumber
+                     [formControl]="$any(valor(articulo.codigo))"
+                     [showButtons]="true"
+                     [min]="1"
+                     [max]="articulo.stock"
+                     (onInput)="onInput($event.value)"
+                  >
+                  </p-inputNumber>
+
+                  <div class="ml-2 flex align-items-center">
+                     <button
+                        *ngIf="isInStock(articulo.codigo)"
+                        (click)="$event.stopPropagation()"
+                        (click)="ajustarArticulo(articulo)"
+                        pButton
+                        label="Ajustar"
+                     ></button>
+
+                     <button
+                        *ngIf="isInStock(articulo.codigo)"
+                        (click)="$event.stopPropagation()"
+                        (click)="quitar(articulo)"
+                        pButton
+                        label="Quitar"
+                        class="ml-2"
+                     ></button>
+                  </div>
+               </form>
+            </td>
+         </tr>
+      </ng-template>
+   </p-table>
+</div>

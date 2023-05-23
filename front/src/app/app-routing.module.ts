@@ -6,6 +6,8 @@ import { AddItemComponent } from './items/add-item/add-item.component';
 import { ShopComponent } from './shop/shop.component';
 import { AddShopComponent } from './shop/add-shop/add-shop.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { ArticuloTiendaComponent } from './articulo-tienda/articulo-tienda.component';
+import { EnviarArticuloComponent } from './articulo-tienda/enviar-articulo/enviar-articulo.component';
 
 const routes: Routes = [
    { path: '', component: HomeComponent },
@@ -18,6 +20,11 @@ const routes: Routes = [
          { path: 'articulos/edit', component: AddItemComponent },
          { path: 'tiendas', component: ShopComponent },
          { path: 'tiendas/edit', component: AddShopComponent },
+         { path: 'articulo-tienda', component: ArticuloTiendaComponent },
+         {
+            path: 'articulo-tienda/:tiendaId',
+            component: EnviarArticuloComponent,
+         },
       ],
    },
 

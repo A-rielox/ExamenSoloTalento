@@ -14,6 +14,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
+import { TableModule } from 'primeng/table';
+
 @NgModule({
    declarations: [],
    imports: [
@@ -29,6 +31,7 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
       InputTextareaModule,
       InputNumberModule,
       ConfirmPopupModule,
+      TableModule,
    ],
    exports: [
       StyleClassModule,
@@ -42,6 +45,7 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
       InputTextareaModule,
       InputNumberModule,
       ConfirmPopupModule,
+      TableModule,
    ],
 })
 export class PrimeModule {}
