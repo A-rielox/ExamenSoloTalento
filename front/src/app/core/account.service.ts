@@ -43,7 +43,7 @@ export class AccountService {
 
       /* 
       {
-	      "nombre": "Ivan",
+	      "nombre": "Ivan", 
 	      "email": "ivan@test.com",
 	      "password": "P@ssword1"
       }

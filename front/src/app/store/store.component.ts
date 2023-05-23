@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ShopService } from '../shop/shop.service';
+import { Router } from '@angular/router';
+import { Tienda } from '../shared/_models/tienda';
 
 @Component({
    selector: 'app-store',
@@ -6,14 +9,26 @@ import { Component, OnInit } from '@angular/core';
    styleUrls: ['./store.component.css'],
 })
 export class StoreComponent implements OnInit {
-   constructor() {}
+   tiendas: Tienda[] = [];
 
-   ngOnInit(): void {}
+   constructor(private shopService: ShopService, private router: Router) {}
+
+   ngOnInit(): void {
+      this.loadTiendas();
+   }
+
+   loadTiendas() {
+      this.shopService.getTiendas().subscribe({
+         next: (res) => {
+            this.tiendas = res;
+         },
+         error: (err) => console.log(err),
+      });
+   }
+
+   goToTienda(tiendaId: number, nombreSucursal: string) {
+      this.router.navigate(['/comprar/', tiendaId], {
+         queryParams: { nombreSucursal },
+      });
+   }
 }
-
-// codigo: 1
-// descripcion: "Pantalón a la moda color azul."
-// imagen: ""
-// precio: 200
-// stock: 100
-// tipo: "Pantalón"

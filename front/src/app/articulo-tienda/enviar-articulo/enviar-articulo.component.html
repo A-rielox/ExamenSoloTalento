@@ -68,6 +68,7 @@
                   pButton
                   label="Añadir"
                   icon="pi pi-plus"
+                  class="p-button-sm"
                ></button>
 
                <form
@@ -92,13 +93,14 @@
                   >
                   </p-inputNumber>
 
-                  <div class="ml-2 flex align-items-center">
+                  <div class="ml-2 flex align-items-center mt-1">
                      <button
                         *ngIf="isInStock(articulo.codigo)"
                         (click)="$event.stopPropagation()"
                         (click)="ajustarArticulo(articulo)"
                         pButton
                         label="Ajustar"
+                        class="p-button-sm"
                      ></button>
 
                      <button
@@ -107,7 +109,7 @@
                         (click)="quitar(articulo)"
                         pButton
                         label="Quitar"
-                        class="ml-2"
+                        class="ml-2 p-button-sm"
                      ></button>
                   </div>
                </form>

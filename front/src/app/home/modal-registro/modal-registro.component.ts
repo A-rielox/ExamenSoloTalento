@@ -33,6 +33,7 @@ export class ModalRegistroComponent implements OnInit {
       this.registerForm = this.fb.group({
          nombre: ['', Validators.required],
          email: ['', Validators.required],
+         direccion: ['', Validators.required],
          password: [
             '',
             [

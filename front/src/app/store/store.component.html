@@ -1,1 +1,36 @@
-<h1>store component ready</h1>
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+   <div class="font-bold text-5xl text-900 mb-3 relative">Tiendas</div>
+
+   <div
+      class="text-700 line-height-3 text-base mb-6 flex flex-wrap align-items-center"
+   >
+      Elige una tienda para comprar.
+   </div>
+
+   <!--              POSTS               -->
+   <div class="grid">
+      <ng-container *ngFor="let tienda of tiendas">
+         <div class="col-12 lg:col-6">
+            <!-- routerLink="{{ '/articulo-tienda/' + tienda.id }}" -->
+            <div
+               (click)="goToTienda(tienda.id, tienda.sucursal)"
+               class="flex shadow-2 surface-card border-round mr-0 xl:mr-4 mb-6 xl:mb-0 flex-column md:flex-row h-full cursor-pointer"
+            >
+               <div class="p-4">
+                  <div class="flex justify-content-between mb-3">
+                     <span class="text-orange-500 text-lg font-medium"
+                        >Id: #{{ tienda.id }}</span
+                     >
+                  </div>
+                  <div class="font-medium text-lg text-900 mb-3 line-height-3">
+                     Sucursal: {{ tienda.sucursal }}
+                  </div>
+                  <div class="line-height-3 text-700">
+                     Dirección: {{ tienda.direccion }}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </ng-container>
+   </div>
+</div>

@@ -1,0 +1,199 @@
+<!-- <div *ngIf="messages && messages.length > 0"> -->
+<div>
+   <p-table
+      [value]="articulosEnTienda"
+      [tableStyle]="{ 'min-width': '40rem' }"
+      [rowHover]="true"
+      styleClass="p-datatable-striped"
+   >
+      <ng-template pTemplate="header">
+         <tr>
+            <th>
+               <span class="font-semibold text-sm text-color-secondary"
+                  >Código Artículo</span
+               >
+            </th>
+            <th>
+               <span class="font-semibold text-sm text-color-secondary"
+                  >Descripción Artículo</span
+               >
+            </th>
+
+            <th>
+               <span class="font-semibold text-sm text-color-secondary"
+                  >Precio</span
+               >
+            </th>
+
+            <th>
+               <span class="font-semibold text-sm text-color-secondary"
+                  >Stock</span
+               >
+            </th>
+            <th>
+               <span class="font-semibold text-sm text-color-secondary"
+                  >Añadir
+               </span>
+            </th>
+            <th></th>
+         </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-articulo>
+         <!-- [hidden]="loading" -->
+         <tr class="cursor-pointer">
+            <td>
+               <div
+                  class="flex align-items-center justify-content-center gap-3"
+               >
+                  <p class="mt-0 mb-2 font-medium text-lg text-color-primary">
+                     {{ articulo.articuloId }}
+                  </p>
+               </div>
+            </td>
+
+            <td>
+               <p class="mt-0 mb-2 font-normal text-base text-color-secondary">
+                  {{ articulo.descripcion }}
+               </p>
+            </td>
+
+            <td>
+               <p
+                  class="mt-0 mb-2 font-normal text-base text-color-secondary flex justify-content-center"
+               >
+                  {{ getPrice(articulo.articuloId) }}
+               </p>
+            </td>
+
+            <td>
+               <p
+                  class="mt-0 mb-2 font-normal text-base text-color-secondary flex justify-content-center"
+               >
+                  {{ articulo.stock }}
+               </p>
+            </td>
+
+            <td>
+               <form
+                  class="flex flex-wrap align-items-center"
+                  [formGroup]="Forma"
+               >
+                  <p-inputNumber
+                     [formControl]="$any(Forma.controls['anadirCantidad'])"
+                     [showButtons]="true"
+                     [min]="0"
+                     [max]="articulo.stock"
+                  >
+                  </p-inputNumber>
+
+                  <button
+                     (click)="$event.stopPropagation()"
+                     (click)="anadirArticulo(articulo)"
+                     pButton
+                     label="Añadir"
+                     class="p-button-sm ml-1 mt-2 xl:mt-0"
+                  ></button>
+               </form>
+            </td>
+         </tr>
+      </ng-template>
+   </p-table>
+</div>
+
+<!--  -->
+<!--  -->
+
+<div class="surface-section px-4 py-4 md:px-6 lg:px-8 mt-5">
+   <div class="text-900 font-bold text-4xl my-2">Tu Carrito 🛒</div>
+   <p class="text-700 text-xl mt-0 mb-4 p-0">Datos de pago y envío.</p>
+   <div
+      style="
+         height: 3px;
+         background: linear-gradient(
+            90deg,
+            #2196f3 0%,
+            rgba(33, 150, 243, 0) 50%
+         );
+      "
+   ></div>
+
+   <div class="border-round surface-border border-1">
+      <ul class="list-none p-0 m-0">
+         <li
+            *ngFor="let item of carrito"
+            class="p-3 border-bottom-1 surface-border flex align-items-start sm:align-items-center"
+         >
+            <img
+               src="{{ item.imagen }}"
+               class="w-3rem sm:w-8rem flex-shrink-0 mr-3 shadow-2"
+            />
+            <div class="flex flex-column">
+               <span class="text-600 mb-3">{{ item.descripcion }}</span>
+               <span class="text-900 font-medium"
+                  >Cantidad: {{ item.cantidad }}</span
+               >
+               <span class="text-900 font-medium"
+                  >Precio: ${{ item.precio }}</span
+               >
+            </div>
+            <span class="text-900 font-medium text-lg ml-auto"
+               >${{ item.monto }}</span
+            >
+         </li>
+      </ul>
+   </div>
+
+   <div class="flex flex-wrap mt-5 pb-3">
+      <div class="w-full lg:w-6 pl-3">
+         <span class="font-medium text-900">Nombre - Correo</span>
+         <div class="flex text-900 mt-3 mb-5">
+            <span class="mb-1 mr-2">{{ usuario?.nombre }}</span>
+            -
+            <span class="mb-1 ml-2">{{ usuario?.email }}</span>
+         </div>
+
+         <span class="font-medium text-900">Dirección Cliente</span>
+         <div class="flex flex-column text-900 mt-3 mb-5">
+            <span class="mb-1">{{ usuario?.direccion }}</span>
+         </div>
+
+         <!-- <span class="font-medium text-900">Método de pago</span>
+         <div class="flex align-items-center mt-3">
+            <img src="assets/visa.png" class="w-4rem mr-3" />
+            <div class="flex flex-column">
+               <span class="text-900 mb-1">Visa Debito</span>
+               <span class="text-900 font-medium">**** **** **** 1234</span>
+            </div>
+         </div> -->
+      </div>
+      <div
+         class="w-full lg:w-6 pl-3 lg:pl-0 lg:pr-3 flex align-items-end mt-5 lg:mt-0"
+      >
+         <ul class="list-none p-0 m-0 w-full">
+            <li class="mb-3">
+               <span class="font-medium text-900">Resumen</span>
+            </li>
+            <li class="flex justify-content-between mb-3">
+               <span class="text-900">Subtotal</span>
+               <span class="text-900 font-medium text-lg"
+                  >${{ getSubtotal() }}</span
+               >
+            </li>
+
+            <li class="flex justify-content-between mb-3">
+               <span class="text-900">Impuesto (10%)</span>
+               <span class="text-900 font-medium text-lg">${{ getTax() }}</span>
+            </li>
+            <li
+               class="flex justify-content-between border-top-1 surface-border py-3"
+            >
+               <span class="text-900 font-medium">Total</span>
+               <span class="text-900 font-bold text-lg"
+                  >${{ getTotalCarrito() }}</span
+               >
+            </li>
+         </ul>
+      </div>
+   </div>
+</div>

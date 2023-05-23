@@ -48,6 +48,7 @@ public class ClientesController : ControllerBase
         {
             Email = cliente.Email,
             Nombre = cliente.Nombre,
+            Direccion = cliente.Direccion,
             Token = _tokenService.CreateToken(cliente),
         };
     }
@@ -70,6 +71,7 @@ public class ClientesController : ControllerBase
         {
             Email = registerDto.Email,
             Nombre = registerDto.Nombre,
+            Direccion = registerDto.Direccion,
             UserName = registerDto.Email, // lo requiere Identity
         };
 
@@ -82,6 +84,7 @@ public class ClientesController : ControllerBase
         {
             Email = cliente.Email,
             Nombre = cliente.Nombre,
+            Direccion = cliente.Direccion,
             Token = _tokenService.CreateToken(cliente),
         };
     }

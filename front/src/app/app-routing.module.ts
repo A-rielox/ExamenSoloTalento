@@ -8,6 +8,8 @@ import { AddShopComponent } from './shop/add-shop/add-shop.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ArticuloTiendaComponent } from './articulo-tienda/articulo-tienda.component';
 import { EnviarArticuloComponent } from './articulo-tienda/enviar-articulo/enviar-articulo.component';
+import { StoreComponent } from './store/store.component';
+import { ComprarArticulosComponent } from './store/comprar-articulos/comprar-articulos.component';
 
 const routes: Routes = [
    { path: '', component: HomeComponent },
@@ -24,6 +26,11 @@ const routes: Routes = [
          {
             path: 'articulo-tienda/:tiendaId',
             component: EnviarArticuloComponent,
+         },
+         { path: 'comprar', component: StoreComponent },
+         {
+            path: 'comprar/:tiendaId',
+            component: ComprarArticulosComponent,
          },
       ],
    },

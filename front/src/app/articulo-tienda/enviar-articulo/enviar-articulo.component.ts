@@ -158,13 +158,5 @@ export class EnviarArticuloComponent implements OnInit {
             this.loadArticulosTienda();
          },
       });
-      /* 
-      {
-         "tiendaArticuloId": 2,
-         "stockInicial": 15,
-         "stockFinal": 20,
-         "articuloId": 2
-      }
-      */
    }
 }

@@ -50,6 +50,7 @@
          <div class="field col-12">
             <!--              IMAGEN -->
             <app-text-input
+               *ngIf="componentMode !== 'New'"
                [formControl]="$any(ArticulosForm.controls['imagen'])"
                [label]="'Imagen'"
             ></app-text-input>

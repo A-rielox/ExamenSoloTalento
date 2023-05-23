@@ -17,4 +17,7 @@ public class RegisterDto
         " letter, 1 Capital letter, 1 digit, 1 special character and the length should be between" +
         " 6-10 characters.")]
     public string Password { get; set; }
+
+    [Required]
+    public string Direccion { get; set; }
 }

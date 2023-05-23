@@ -33,10 +33,16 @@
             [label]="'Nombre'"
          ></app-text-input>
 
-         <!--              knownAs -->
+         <!--              EMAIL -->
          <app-text-input
             [formControl]="$any(registerForm.controls['email'])"
             [label]="'Email'"
+         ></app-text-input>
+
+         <!--              DIRECCION -->
+         <app-text-input
+            [formControl]="$any(registerForm.controls['direccion'])"
+            [label]="'Dirección'"
          ></app-text-input>
 
          <!--              PASS -->
